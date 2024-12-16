@@ -1,13 +1,30 @@
 <% cache @product do %>
-  <h1><%= @product.name %></h1>
-    <%= @product.description %>
-
+    <div class="row">
+    	<div class="col-3 m-auto">
+    		<div class="card">
+    	<div class="card-body">
+    		<h1><%= @product.name %></h1>
+                <%= @product.description %>
+                Quantity:<%= @product.inventory_count %>
+               
+    	</div>
+    	<div class="card-footer">
+    		 <%= render "inventory", product: @product %>
+    	</div>
+    </div>
+    	</div>
+    </div>
 <% end %>
 
+<br><br>
 
-<%= link_to "Back", products_path %>
-<% if authenticated? %>
-  <%= link_to "Edit", edit_product_path(@product) %>
-  <%= button_to "Destroy", @product, method: :delete, data: { turbo_confirm: "Are you sure?" } %>
-<% end %>
+
+
+<div class="row">
+	<% if authenticated? %>
+	<div class="col-1 m-auto"><%= link_to "Edit", edit_product_path(@product), class: "btn btn-secondary" %></div>
+	<div class="col-1 m-auto"><%= button_to "Destroy", @product, method: :delete, data: { turbo_confirm: "Are you sure?" } %></div>
+    <% end %>
+</div>
+<%= link_to "Back", products_path,class: "btn btn-secondary" %>
 

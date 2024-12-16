@@ -1,15 +1,22 @@
 <%= form_with model: product do |form| %>
-  <div>
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-   <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.rich_text_area :description %>
-  </div>
+    <div class="row">
+    <div class="col-5 m-auto">
+        <div class="card">
+            <div class="card-header">
+              <%= form.label :name %>
+              <%= form.text_field :name %>
+              <%= form.label :inventory_count, style: "display: block" %>
+              <%= form.number_field :inventory_count %>
+            </div>
+            <div class="card-body">
+              <%= form.label :description, style: "display: block" %>
+              <%= form.rich_text_area :description %>
 
-
-  <div>
-    <%= form.submit %>
-  </div>
+            </div>
+            <div class="card-footer">
+               <%= form.submit %>
+            </div>
+        </div>
+    </div>
+</div>
 <% end %>

@@ -1,13 +1,23 @@
-<h1>Products</h1>
+<div class="d-flex justify-content-between align-items-center">
+  <h1><%= t ".title" %></h1>
+  <%= link_to "Login", new_session_path, class: "btn btn-secondary" unless authenticated? %>
+</div>
 
-<div id="products">
+
+
+
+
+<div id="products" class="row">
   <% @products.each do |product| %>
-    <div>
-      <a href="/products/<%= product.id %>">
+    <div class="col-2 bg-light">
+      <div class="card text-center">
+      	<a href="/products/<%= product.id %>" class="btn btn-secondary">
         <%= product.name %>
       </a>
+      </div>
     </div>
   <% end %>
 </div>
-<%= link_to "New product", new_product_path if authenticated? %>
-<%= link_to "Login", new_session_path unless authenticated? %>
+<br><br><br>
+<%= link_to "Add New product", new_product_path, class: "btn btn-light" if authenticated? %>
+

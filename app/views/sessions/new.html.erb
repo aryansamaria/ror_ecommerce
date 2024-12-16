@@ -2,10 +2,27 @@
 <%= tag.div(flash[:notice], style: "color:green") if flash[:notice] %>
 
 <%= form_with url: session_path do |form| %>
-  <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address] %><br>
-  <%= form.password_field :password, required: true, autocomplete: "current-password", placeholder: "Enter your password", maxlength: 72 %><br>
-  <%= form.submit "Sign in" %>
+  <div class="row">
+  <div class="col-4 m-auto">
+    <div class="card">
+      <div class="card-header text-center"><i class="bi bi-box-arrow-in-right"></i></div>
+      <div class="card-body">
+        <tr><td>
+          <%= form.email_field :email_address, required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address] %>
+        </td></tr>
+        <tr>
+          <td><%= form.password_field :password, required: true, autocomplete: "current-password", placeholder: "Enter your password", maxlength: 20 %></td>
+        </tr>
+      </div>
+      <div class="card-footer text-center">
+        <%= form.submit "Sign in" %>
+      </div>
+    </div>
+  </div>
+</div>
+  
 <% end %>
 <br>
+<div class="text-center"><%= link_to "Forgot password?", new_password_path%></div>
 
-<%= link_to "Forgot password?", new_password_path %>
+
